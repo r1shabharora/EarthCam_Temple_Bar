@@ -1,0 +1,4 @@
+# Person Detection — YouTube Live Feed
+ultralytics>=8.0.0           # YOLOv8 (includes torch)
+opencv-python-headless>=4.8.0  # headless build — works in Docker & CI (no display needed)
+yt-dlp>=2024.1.0             # YouTube stream URL resolver
