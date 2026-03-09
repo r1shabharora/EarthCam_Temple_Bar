@@ -3,11 +3,9 @@ services:
     image: ghcr.io/${GITHUB_REPOSITORY:-your-username/earthcam}:latest
     # To build locally instead: comment the line above and uncomment below:
     # build: .
+    env_file: .env                        # loads DATABASE_URL automatically
     environment:
-      - YOUTUBE_URL=${YOUTUBE_URL}          # set in .env or shell
+      - YOUTUBE_URL=${YOUTUBE_URL}
       - YOLO_MODEL=${YOLO_MODEL:-yolov8n.pt}
       - CONF_THRESHOLD=${CONF_THRESHOLD:-0.40}
-      - CSV_PATH=/app/data/detections.csv
-    volumes:
-      - ./data:/app/data                    # detections.csv written here
     restart: unless-stopped

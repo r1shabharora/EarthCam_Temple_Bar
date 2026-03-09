@@ -1,0 +1,23 @@
+# ByteTrack configuration — tuned for street-level pedestrian counting
+# Used by: python detection.py --url ... (passed as tracker="bytetrack_custom.yaml")
+# Reference: https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/trackers/bytetrack.yaml
+
+tracker_type: bytetrack
+
+# Detection thresholds
+# High-confidence detections are matched first. Low-confidence detections are
+# kept in a secondary pool and matched to existing tracks (avoids losing occluded persons).
+track_high_thresh: 0.5    # min confidence to create a new track
+track_low_thresh:  0.1    # min confidence to enter the secondary matching pool
+new_track_thresh:  0.6    # min confidence to confirm a brand-new track (reduces false positives)
+
+# Track memory
+# 60 frames ≈ 2 s at 30 fps — enough for a person to step behind an obstacle
+# and re-emerge without losing their track ID.
+track_buffer: 60
+
+# Matching
+match_thresh: 0.8         # IoU threshold for associating detections to existing tracks
+
+# Fuse detection score with IoU when ranking matches (required by recent ultralytics)
+fuse_score: True

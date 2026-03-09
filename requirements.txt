@@ -1,4 +1,8 @@
 # Person Detection — YouTube Live Feed
-ultralytics>=8.0.0           # YOLOv8 (includes torch)
-opencv-python-headless>=4.8.0  # headless build — works in Docker & CI (no display needed)
-yt-dlp>=2024.1.0             # YouTube stream URL resolver
+ultralytics>=8.0.0             # YOLOv8 (includes torch)
+opencv-python-headless>=4.8.0  # headless build — works in Docker & CI
+yt-dlp>=2024.1.0               # YouTube stream URL resolver
+numpy>=1.24.0                  # raw frame buffer handling (ffmpeg pipe)
+psycopg2-binary>=2.9.0         # PostgreSQL driver for Supabase direct connection
+python-dotenv>=1.0.0           # load .env file
+flask>=3.0.0                   # MJPEG HTTP stream server

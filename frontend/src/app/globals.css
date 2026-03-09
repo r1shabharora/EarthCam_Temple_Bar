@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon: #00ff88;
+  --cyan: #00d4ff;
+  --bg: #050508;
+  --surface: rgba(255, 255, 255, 0.03);
+  --border: rgba(0, 255, 136, 0.12);
+  --border-hover: rgba(0, 255, 136, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg);
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,255,136,0.3); border-radius: 2px; }
+
+/* Glass card */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.glass:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 24px rgba(0,255,136,0.06);
+}
+
+/* Neon glow text */
+.neon-text {
+  color: var(--neon);
+  text-shadow: 0 0 20px rgba(0,255,136,0.5);
+}
+.cyan-text {
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0,212,255,0.5);
+}
+
+/* Live indicator pulse */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,255,136,0.6); }
+  50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(0,255,136,0); }
+}
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--neon);
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+/* Scan line overlay */
+@keyframes scan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.scan-line {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0,255,136,0.15), transparent);
+  animation: scan 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Number counter glow */
+.metric-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Chart tooltip */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: rgba(5,5,8,0.95) !important;
+  border: 1px solid rgba(0,255,136,0.2) !important;
+  border-radius: 8px !important;
+  color: #e2e8f0 !important;
+}
