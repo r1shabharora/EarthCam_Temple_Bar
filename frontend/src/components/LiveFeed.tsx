@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
+// Production: set NEXT_PUBLIC_STREAM_URL in the Vercel dashboard to your backend's public URL.
+// Fallback to localhost for local dev only — the browser must be able to reach this address.
 const STREAM_URL = process.env.NEXT_PUBLIC_STREAM_URL ?? "http://localhost:8080/stream";
 
 interface Props {

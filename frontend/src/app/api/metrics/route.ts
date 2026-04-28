@@ -1,7 +1,5 @@
-import { Pool } from "pg";
 import { NextResponse } from "next/server";
-
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+import pool from "@/lib/db";
 
 export const revalidate = 0;
 
